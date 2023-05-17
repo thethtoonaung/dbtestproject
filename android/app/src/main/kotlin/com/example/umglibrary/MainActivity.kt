@@ -1,4 +1,4 @@
-package com.example.debestech_course_project
+package com.umg.library
 
 import io.flutter.embedding.android.FlutterActivity
 
