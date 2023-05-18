@@ -15,6 +15,7 @@ class _WelcomeState extends State<Welcome> {
       color: Colors.white,
       child: Scaffold(
           body: Container(
+        margin: EdgeInsets.only(top: 34.h),
         width: 375.w,
         child: Stack(
           children: [
@@ -23,7 +24,16 @@ class _WelcomeState extends State<Welcome> {
                 SizedBox(
                   width: 345.w,
                   height: 345.w,
-                  child: Text("Image One"),
+                  child: const Text("Image One"),
+                ),
+                Container(
+                  child: Text(
+                    "First See Learning",
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 24.sp,
+                        fontWeight: FontWeight.normal),
+                  ),
                 )
               ],
             )
