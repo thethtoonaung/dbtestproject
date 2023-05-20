@@ -113,7 +113,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => CounterBloc(),
-      child: ScreenUtilInit(builder: (context,child) => MaterialApp(debugShowCheckedModeBanner: false,
+      child: ScreenUtilInit(builder: (context,child) => MaterialApp(
+        debugShowCheckedModeBanner: false,
       home: Welcome(),))
     );
   }
