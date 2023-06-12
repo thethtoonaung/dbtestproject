@@ -6,8 +6,9 @@ part 'welcome_state.dart';
 
 class WelcomeBloc extends Bloc<WelcomeEvent, WelcomeState> {
   WelcomeBloc() : super(WelcomeInitial()) {
+    print("Welcome bloc"); 
     on<WelcomeEvent>((event, emit) {
-      // TODO: implement event handler
+      emit(WelcomeState(page: state.page));
     });
   }
 }

@@ -98,6 +98,8 @@
 
 import 'package:debestech_course_project/counter_bloc/counter_bloc.dart';
 import 'package:debestech_course_project/pages/bloc/welcome.dart';
+import 'package:debestech_course_project/pages/bloc/welcome_bloc.dart';
+import 'package:debestech_course_project/pages/sign_in/sign_in.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -111,12 +113,26 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => CounterBloc(),
-      child: ScreenUtilInit(builder: (context,child) => MaterialApp(
-        debugShowCheckedModeBanner: false,
-      home: Welcome(),))
-    );
+    return MultiBlocProvider(
+        providers: [
+          BlocProvider(
+            create: (context) => WelcomeBloc(),
+          ),
+          BlocProvider(
+            // lazy: false, // lazy false so a yin load load
+            create: (context) => CounterBloc(),
+          ),
+        ],
+        child: ScreenUtilInit(
+            builder: (context, child) => MaterialApp(
+                  debugShowCheckedModeBanner: false,
+                  home: Welcome(),
+                  routes: {
+                    "myHomePage": (context) =>
+                        const MyHomePage(title: "Home Page"),
+                    "signIn": (context) => const SignIn(),
+                  },
+                )));
   }
 }
 
@@ -174,12 +190,14 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             FloatingActionButton(
+              heroTag: "heroTag1",
               onPressed: () =>
                   BlocProvider.of<CounterBloc>(context).add(Increment()),
               tooltip: 'Increment',
               child: const Icon(Icons.add),
             ),
             FloatingActionButton(
+              heroTag: "heroTag2",
               onPressed: () =>
                   BlocProvider.of<CounterBloc>(context).add(Decrement()),
               tooltip: 'decrement',
