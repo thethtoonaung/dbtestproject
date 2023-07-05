@@ -1,3 +1,4 @@
+import 'package:debestech_course_project/pages/sign_in/widgets/sign_in_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
@@ -18,20 +19,39 @@ class _SignInState extends State<SignIn> {
       child: SafeArea(
         child: Scaffold(
           backgroundColor: Colors.white,
-          appBar: AppBar(
-              backgroundColor: Colors.white,
-              bottom: PreferredSize(
-                  child: Container(
-                    color: Colors.grey.withOpacity(0.5),
+          appBar: buildAppBar(),
+          body: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                buildThirdPartyLogin(context),
+                Center(
+                    child: reusableText("Or use your email account to Login ")),
+                Container(
+                  margin: EdgeInsets.only(top: 66.h),
+                  padding: EdgeInsets.only(left: 25.w, right: 25.w),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      reusableText("Email"),
+                      SizedBox(
+                        height: 5.h,
+                      ),
+                      buildTextField(
+                          "Enter your email address", "email", "user"),
+                      reusableText("Password"),
+                      SizedBox(
+                        height: 5.h,
+                      ),
+                      buildTextField("Enter your password", "password", "lock"),
+                    ],
                   ),
-                  preferredSize: Size.fromHeight(1.0)),
-              title: Text(
-                "Log In",
-                style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 16.sp,
-                    fontWeight: FontWeight.normal),
-              )),
+                ),
+                forgotPassword(),
+                buildLoginAndRegButton("Log In"),
+              ],
+            ),
+          ),
         ),
       ),
     );
