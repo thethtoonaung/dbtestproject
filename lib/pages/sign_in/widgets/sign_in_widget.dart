@@ -1,3 +1,4 @@
+import 'package:debestech_course_project/common/values/color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -6,7 +7,7 @@ AppBar buildAppBar() {
       backgroundColor: Colors.white,
       bottom: PreferredSize(
           child: Container(
-            color: Colors.grey.withOpacity(0.5),
+            color: AppColors.primarySecondaryBackground,
             //height defines the thickness of the line
             height: 1.0,
           ),
@@ -15,7 +16,7 @@ AppBar buildAppBar() {
         child: Text(
           "Log In",
           style: TextStyle(
-              color: Colors.black,
+              color: AppColors.primaryText,
               fontSize: 16.sp,
               fontWeight: FontWeight.normal),
         ),
@@ -134,16 +135,22 @@ Widget forgotPassword() {
   );
 }
 
-Widget buildLoginAndRegButton(String buttonName) {
+Widget buildLoginAndRegButton(String buttonName, String buttonType) {
   return GestureDetector(
     onTap: () {},
     child: Container(
-      margin: EdgeInsets.only(left: 25.w, right: 25.w, top: 40.h),
+      margin: EdgeInsets.only(left: 25.w, right: 25.w, top: buttonType
+      
+      =="login" ? 40.h:20.h),
       width: 325.w,
       height: 50.h,
       decoration: BoxDecoration(
-          color: Colors.blue,
+          color: buttonType=="login"? AppColors.primaryElement:AppColors.primaryBackground,
           borderRadius: BorderRadius.circular(15.w),
+          border: Border.all(
+            //check for registration button border color
+            color: buttonType == "login" ? Colors.transparent: AppColors.primaryFourElementText
+          ),
           boxShadow: [
             BoxShadow(
               spreadRadius: 1,
@@ -152,6 +159,11 @@ Widget buildLoginAndRegButton(String buttonName) {
               color: Colors.grey.withOpacity(0.1),
             )
           ]),
+      child: Center(child: Text(buttonName,style: TextStyle(
+        fontSize: 16.sp,
+        fontWeight: FontWeight.normal,
+        color: buttonType == "login" ? AppColors.primaryBackground : AppColors.primaryText
+      ),),),
     ),
   );
 }
