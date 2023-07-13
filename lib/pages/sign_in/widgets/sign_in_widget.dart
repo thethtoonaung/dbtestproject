@@ -29,6 +29,7 @@ Widget buildThirdPartyLogin(BuildContext context) {
     children: [
       Container(
         margin: EdgeInsets.only(top: 40.h, bottom: 20.h),
+        padding: EdgeInsets.only(left: 25.w,right: 25.w),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
@@ -79,7 +80,7 @@ Widget buildTextField(String hintText, String textType, String iconName) {
     decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.all(Radius.circular(15.w)),
-        border: Border.all(color: Colors.black)),
+        border: Border.all(color: AppColors.primaryFourElementText)),
     child: Row(children: [
       Container(
         width: 16.w,
@@ -102,9 +103,9 @@ Widget buildTextField(String hintText, String textType, String iconName) {
                   borderSide: BorderSide(color: Colors.transparent)),
               focusedBorder: OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.transparent)),
-              hintStyle: TextStyle(color: Colors.grey)),
+              hintStyle: const TextStyle(color: AppColors.primarySecondaryElementText)),
           style: TextStyle(
-              color: Colors.black,
+              color: AppColors.primaryText,
               fontFamily: "Avenir",
               fontWeight: FontWeight.normal,
               fontSize: 14.sp),
@@ -126,8 +127,9 @@ Widget forgotPassword() {
       child: Text(
         "Forgot password",
         style: TextStyle(
-          color: Colors.black,
+          color: AppColors.primaryText,
           decoration: TextDecoration.underline,
+          decorationColor: AppColors.primaryText,
           fontSize: 12.sp,
         ),
       ),

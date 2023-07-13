@@ -1,5 +1,6 @@
+import 'package:debestech_course_project/common/values/color.dart';
 import 'package:debestech_course_project/main.dart';
-import 'package:debestech_course_project/pages/bloc/welcome_bloc.dart';
+import 'package:debestech_course_project/pages/welcome/bloc/welcome_bloc.dart';
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -64,8 +65,8 @@ class _WelcomeState extends State<Welcome> {
                       dotsCount: 3,
                       mainAxisAlignment: MainAxisAlignment.center,
                       decorator: DotsDecorator(
-                          color: Colors.grey,
-                          activeColor: Colors.blue,
+                          color: AppColors.primaryThirdElementText,
+                          activeColor: AppColors.primaryElement,
                           size: Size.square(8.0),
                           activeSize: Size(18.0, 8.0),
                           activeShape: RoundedRectangleBorder(
@@ -97,7 +98,7 @@ class _WelcomeState extends State<Welcome> {
             child: Text(
               title,
               style: TextStyle(
-                  color: Colors.black,
+                  color: AppColors.primaryText,
                   fontSize: 24.sp,
                   fontWeight: FontWeight.normal),
             ),
@@ -107,7 +108,7 @@ class _WelcomeState extends State<Welcome> {
               subTitle,
               textAlign: TextAlign.center,
               style: TextStyle(
-                color: Colors.black.withOpacity(0.5),
+                color: AppColors.primarySecondaryElementText,
                 fontSize: 14.sp,
                 fontWeight: FontWeight.normal,
               ),
@@ -133,7 +134,7 @@ class _WelcomeState extends State<Welcome> {
               height: 50.h,
               margin: EdgeInsets.only(top: 100.h, left: 25.w, right: 25.w),
               decoration: BoxDecoration(
-                  color: Colors.blue,
+                  color: AppColors.primaryElement,
                   borderRadius: BorderRadius.all(Radius.circular(15.w)),
                   boxShadow: [
                     BoxShadow(
