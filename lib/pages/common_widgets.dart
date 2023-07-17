@@ -2,7 +2,7 @@ import 'package:debestech_course_project/common/values/color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-AppBar buildAppBar() {
+AppBar buildAppBar(String type) {
   return AppBar(
       backgroundColor: Colors.white,
       bottom: PreferredSize(
@@ -14,7 +14,7 @@ AppBar buildAppBar() {
           preferredSize: const Size.fromHeight(1.0)),
       title: Center(
         child: Text(
-          "Log In",
+          type,
           style: TextStyle(
               color: AppColors.primaryText,
               fontSize: 16.sp,
@@ -29,7 +29,7 @@ Widget buildThirdPartyLogin(BuildContext context) {
     children: [
       Container(
         margin: EdgeInsets.only(top: 40.h, bottom: 20.h),
-        padding: EdgeInsets.only(left: 25.w,right: 25.w),
+        padding: EdgeInsets.only(left: 25.w, right: 25.w),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
@@ -73,8 +73,7 @@ Widget reusableText(String text) {
 }
 
 Widget buildTextField(String hintText, String textType, String iconName,
-void Function(String value)? func
-) {
+    void Function(String value)? func) {
   return Container(
     width: 325.w,
     height: 50.h,
@@ -94,7 +93,7 @@ void Function(String value)? func
         width: 270.w,
         height: 50.h,
         child: TextField(
-          onChanged: (value)=> func!(value),
+          onChanged: (value) => func!(value),
           keyboardType: TextInputType.multiline,
           decoration: InputDecoration(
               hintText: hintText,
@@ -106,7 +105,8 @@ void Function(String value)? func
                   borderSide: BorderSide(color: Colors.transparent)),
               focusedBorder: OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.transparent)),
-              hintStyle: const TextStyle(color: AppColors.primarySecondaryElementText)),
+              hintStyle: const TextStyle(
+                  color: AppColors.primarySecondaryElementText)),
           style: TextStyle(
               color: AppColors.primaryText,
               fontFamily: "Avenir",
@@ -140,22 +140,25 @@ Widget forgotPassword() {
   );
 }
 
-Widget buildLoginAndRegButton(String buttonName, String buttonType,void Function()? func) {
+Widget buildLoginAndRegButton(
+    String buttonName, String buttonType, void Function()? func) {
   return GestureDetector(
     onTap: func,
     child: Container(
-      margin: EdgeInsets.only(left: 25.w, right: 25.w, top: buttonType
-      
-      =="login" ? 40.h:20.h),
+      margin: EdgeInsets.only(
+          left: 25.w, right: 25.w, top: buttonType == "login" ? 40.h : 20.h),
       width: 325.w,
       height: 50.h,
       decoration: BoxDecoration(
-          color: buttonType=="login"? AppColors.primaryElement:AppColors.primaryBackground,
+          color: buttonType == "login"
+              ? AppColors.primaryElement
+              : AppColors.primaryBackground,
           borderRadius: BorderRadius.circular(15.w),
           border: Border.all(
-            //check for registration button border color
-            color: buttonType == "login" ? Colors.transparent: AppColors.primaryFourElementText
-          ),
+              //check for registration button border color
+              color: buttonType == "login"
+                  ? Colors.transparent
+                  : AppColors.primaryFourElementText),
           boxShadow: [
             BoxShadow(
               spreadRadius: 1,
@@ -164,11 +167,17 @@ Widget buildLoginAndRegButton(String buttonName, String buttonType,void Function
               color: Colors.grey.withOpacity(0.1),
             )
           ]),
-      child: Center(child: Text(buttonName,style: TextStyle(
-        fontSize: 16.sp,
-        fontWeight: FontWeight.normal,
-        color: buttonType == "login" ? AppColors.primaryBackground : AppColors.primaryText
-      ),),),
+      child: Center(
+        child: Text(
+          buttonName,
+          style: TextStyle(
+              fontSize: 16.sp,
+              fontWeight: FontWeight.normal,
+              color: buttonType == "login"
+                  ? AppColors.primaryBackground
+                  : AppColors.primaryText),
+        ),
+      ),
     ),
   );
 }
