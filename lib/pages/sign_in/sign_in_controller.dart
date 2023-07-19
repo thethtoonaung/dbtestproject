@@ -1,6 +1,6 @@
-
-
+import 'package:debestech_course_project/common/values/constant.dart';
 import 'package:debestech_course_project/common/widgets/flutter_toast.dart';
+import 'package:debestech_course_project/global.dart';
 import 'package:debestech_course_project/pages/sign_in/bloc/sign_in_bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -21,7 +21,7 @@ class SignInController {
           print("email is empty");
           toastInfo(msg: "You need to fill email address");
           return;
-        }else {
+        } else {
           print("email is $emailAddress");
         }
         if (password.isEmpty) {
@@ -45,27 +45,28 @@ class SignInController {
             return;
           }
           var user = credential.user;
-          if (user != null){
+          if (user != null) {
             //we got verified user from firebase
             print("user exist");
-          }else {
+            Global.storageService
+                .setString(AppConstants.STORAGE_USER_PROFILE_KEY, "1234567");
+            Navigator.of(context)
+                .pushNamedAndRemoveUntil("/application", (route) => false);
+          } else {
             toastInfo(msg: "Currently you are not a user of this app");
             return;
           }
         } on FirebaseAuthException catch (e) {
           //we have error getting user from firebase
-          if (e.code == "user-not-found"){
+          if (e.code == "user-not-found") {
             print("No user found for that email.");
             toastInfo(msg: 'No user found for that email.');
-            
-          }else if (e.code == "wrong-password"){
+          } else if (e.code == "wrong-password") {
             print("Writng password provided for that user");
             toastInfo(msg: 'Writing password provided for that user');
-            
-          }else if (e.code == "invalid-email"){
+          } else if (e.code == "invalid-email") {
             print("Your email format is wrong.");
             toastInfo(msg: 'Your email format is wrong.');
-            
           }
         }
       }

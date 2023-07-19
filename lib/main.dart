@@ -1,21 +1,18 @@
+import 'package:debestech_course_project/common/routes/routes.dart';
 import 'package:debestech_course_project/common/values/color.dart';
 import 'package:debestech_course_project/counter_bloc/counter_bloc.dart';
+import 'package:debestech_course_project/global.dart';
+import 'package:debestech_course_project/pages/application/application_page.dart';
 import 'package:debestech_course_project/pages/bloc_provider.dart';
-import 'package:debestech_course_project/pages/register/register.dart';
-import 'package:debestech_course_project/pages/sign_in/bloc/sign_in_bloc.dart';
+import 'package:debestech_course_project/pages/welcome/welcome.dart';
 
-import 'package:debestech_course_project/pages/sign_in/sign_in.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'pages/welcome/bloc/welcome_bloc.dart';
-import 'pages/welcome/welcome.dart';
-
 Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  await Global.init();
   runApp(const MyApp());
 }
 
@@ -25,7 +22,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-        providers: AppBlocProviders.allBlocProviders,
+        // providers: AppBlocProviders.allBlocProviders,
+        providers: [...AppPages.allBlocProviders(context)],
         child: ScreenUtilInit(
             builder: (context, child) => MaterialApp(
                   debugShowCheckedModeBanner: false,
@@ -36,13 +34,16 @@ class MyApp extends StatelessWidget {
                                   .primaryText), // for show back button
                           elevation: 0,
                           backgroundColor: Colors.white)),
-                  home: Welcome(),
-                  routes: {
-                    "myHomePage": (context) =>
-                        const MyHomePage(title: "Home Page"),
-                    "signIn": (context) => const SignIn(),
-                    "register": (context) => const Register(),
-                  },
+                  // home: const Welcome(),
+                  onGenerateRoute: AppPages.GenerateRouteSetting,
+                  // home: ApplicationPage(),
+                  // initialRoute: "/",
+                  // routes: {
+                  //   "myHomePage": (context) =>
+                  //       const MyHomePage(title: "Home Page"),
+                  //   "signIn": (context) => const SignIn(),
+                  //   "register": (context) => const Register(),
+                  // },
                 )));
   }
 }

@@ -66,7 +66,7 @@ class _SignInState extends State<SignIn> {
                   }),
                   buildLoginAndRegButton("Sign Up", "register", () {
                     print("Register button");
-                    Navigator.of(context).pushNamed("register");
+                    Navigator.of(context).pushNamed("/register");
                   }),
                 ],
               ),

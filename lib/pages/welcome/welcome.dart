@@ -1,4 +1,6 @@
 import 'package:debestech_course_project/common/values/color.dart';
+import 'package:debestech_course_project/common/values/constant.dart';
+import 'package:debestech_course_project/global.dart';
 import 'package:debestech_course_project/main.dart';
 import 'package:debestech_course_project/pages/welcome/bloc/welcome_bloc.dart';
 import 'package:dots_indicator/dots_indicator.dart';
@@ -119,14 +121,19 @@ class _WelcomeState extends State<Welcome> {
               //within 0-2 index
               if (index < 3) {
                 pageController.animateToPage(index,
-                    duration: Duration(milliseconds: 1000),
+                    duration: Duration(milliseconds: 500),
                     curve: Curves.decelerate);
               } else {
                 //jump to a new page
                 // Navigator.of(context).push(MaterialPageRoute(
                 //     builder: (context) => MyHomePage(title: title)));
+
+                Global.storageService
+                    .setBool(AppConstants.STORAGE_DEVICE_OPEN_FIRST_TIME, true);
+                print(
+                "The value is ${Global.storageService.getDeviceFirstOpen()}");
                 Navigator.of(context)
-                    .pushNamedAndRemoveUntil("signIn", (route) => false);
+                    .pushNamedAndRemoveUntil("/sign_in", (route) => false);
               }
             },
             child: Container(
