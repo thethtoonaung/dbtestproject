@@ -54,7 +54,7 @@ class AppPages {
 
   // a modal that covers entire screen as we click as nevigator object
   static MaterialPageRoute GenerateRouteSetting(RouteSettings settings) {
-    if (settings != null) {
+    if (settings.name != null) {
       //check for route name nothing when navigator gets triggered.
       var result = routes().where((element) => element.route == settings.name);
       if (result.isNotEmpty) {
@@ -76,9 +76,9 @@ class AppPages {
             builder: (_) => result.first.page, settings: settings);
       }
 
-      print("valid route name ${settings.name}");
-      return MaterialPageRoute(
-          builder: (_) => result.first.page, settings: settings);
+      // print("valid route name ${settings.name}");
+      // return MaterialPageRoute(
+      //     builder: (_) => result.first.page, settings: settings);
     }
     print("invalid route name ${settings.name}");
     return MaterialPageRoute(

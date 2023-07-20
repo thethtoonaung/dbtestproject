@@ -49,7 +49,7 @@ class SignInController {
             //we got verified user from firebase
             print("user exist");
             Global.storageService
-                .setString(AppConstants.STORAGE_USER_PROFILE_KEY, "1234567");
+                .setString(AppConstants.STORAGE_USER_TOKEN_KEY, "123456");
             Navigator.of(context)
                 .pushNamedAndRemoveUntil("/application", (route) => false);
           } else {
