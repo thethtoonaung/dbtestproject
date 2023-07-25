@@ -1,12 +1,11 @@
 import 'package:debestech_course_project/common/values/color.dart';
+import 'package:debestech_course_project/pages/home/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 Widget buildPage(int index) {
   List<Widget> _widget = [
-    Center(
-      child: Text("Home"),
-    ),
+    HomePage(),
     Center(
       child: Text("Search"),
     ),
