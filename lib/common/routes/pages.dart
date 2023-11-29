@@ -4,6 +4,10 @@ import 'package:debestech_course_project/common/routes/names.dart';
 import 'package:debestech_course_project/global.dart';
 import 'package:debestech_course_project/pages/application/application_page.dart';
 import 'package:debestech_course_project/pages/application/bloc/app_bloc.dart';
+import 'package:debestech_course_project/pages/home/bloc/home_page_bloc.dart';
+import 'package:debestech_course_project/pages/home/home_page.dart';
+import 'package:debestech_course_project/pages/profile/settings/bloc/settings_bloc.dart';
+import 'package:debestech_course_project/pages/profile/settings/settings_page.dart';
 import 'package:debestech_course_project/pages/register/bloc/register_bloc.dart';
 import 'package:debestech_course_project/pages/register/register.dart';
 import 'package:debestech_course_project/pages/sign_in/bloc/sign_in_bloc.dart';
@@ -40,6 +44,18 @@ class AppPages {
           bloc: BlocProvider(
             create: (_) => AppBloc(),
           )),
+      PageEntity(
+          route: AppRoutes.HOME_PAGE,
+          page: const HomePage(),
+          bloc: BlocProvider(
+            create: (_) => HomePageBloc(),
+          )),
+      PageEntity(
+          route: AppRoutes.SETTINGS,
+          page: const SettingsPage(),
+          bloc: BlocProvider(
+            create: (_) => SettingsBloc(),
+          )),
     ];
   }
 
@@ -65,12 +81,16 @@ class AppPages {
           bool isLoggedIn = Global.storageService.getIsLoggedIn();
           if (isLoggedIn) {
             return MaterialPageRoute(
-                builder: (_) => const ApplicationPage(), settings: settings);
+                // builder: (_) => const ApplicationPage(), settings: settings);
+                builder: (_) => const ApplicationPage(),
+                settings: settings);
           }
 
           print("Second Login");
           return MaterialPageRoute(
-              builder: (_) => const SignIn(), settings: settings);
+              // builder: (_) => const SignIn(), settings: settings);
+              builder: (_) => const ApplicationPage(),
+              settings: settings);
         }
         return MaterialPageRoute(
             builder: (_) => result.first.page, settings: settings);

@@ -1,36 +1,26 @@
 {
   "project_info": {
-    "project_number": "933839126492",
-    "project_id": "umglibrary",
-    "storage_bucket": "umglibrary.appspot.com"
+    "project_number": "911719810874",
+    "project_id": "dbtestproject-fa3ec",
+    "storage_bucket": "dbtestproject-fa3ec.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:933839126492:android:33d4af7442b0868b649919",
+        "mobilesdk_app_id": "1:911719810874:android:0d70b5d3f9d6c0dc4db203",
         "android_client_info": {
-          "package_name": "com.umg.library"
+          "package_name": "com.thn.dbtestproject"
         }
       },
-      "oauth_client": [
-        {
-          "client_id": "933839126492-6viktsuu30r64siq9nkdui91ld04qkvh.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
+      "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyCFrgocFZiARSYX9mlg4CKMMm82Oia2zkQ"
+          "current_key": "AIzaSyBPiPPVhe6BRPwhGI7CgV55a3vAGtSytFA"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "933839126492-6viktsuu30r64siq9nkdui91ld04qkvh.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
+          "other_platform_oauth_client": []
         }
       }
     }

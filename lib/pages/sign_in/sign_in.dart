@@ -60,6 +60,7 @@ class _SignInState extends State<SignIn> {
                     ),
                   ),
                   forgotPassword(),
+                  
                   buildLoginAndRegButton("Log In", "login", () {
                     print("login button");
                     SignInController(context: context).handleSignIn("email");
