@@ -1,5 +1,6 @@
 import 'package:debestech_course_project/common/routes/names.dart';
 import 'package:debestech_course_project/common/values/color.dart';
+import 'package:debestech_course_project/common/widgets/base_text_widget.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -15,13 +16,7 @@ AppBar buildAppbar() {
             height: 12.h,
             child: Image.asset("assets/icons/menu.png"),
           ),
-          Text(
-            "Profile",
-            style: TextStyle(
-                color: AppColors.primaryText,
-                fontWeight: FontWeight.bold,
-                fontSize: 16.sp),
-          ),
+          reusableText("Profile"),
           SizedBox(
             width: 24.w,
             height: 24.h,
@@ -58,6 +53,15 @@ var imageInfo = <String, String>{
   "Reminders": "cube.png"
 };
 
+String func1() {
+  print("hellllo");
+  return "Hellolllo";
+}
+
+void func() {
+  func1();
+}
+
 //setting sections buttons
 Widget buildListView(BuildContext context) {
   return Column(
@@ -66,6 +70,7 @@ Widget buildListView(BuildContext context) {
           imageInfo.length,
           (index) => GestureDetector(
                 onTap: () =>
+                    // func(),
                     Navigator.of(context).pushNamed(AppRoutes.SETTINGS),
                 child: Container(
                   margin: EdgeInsets.only(bottom: 15.h),

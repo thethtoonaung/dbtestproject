@@ -1,4 +1,5 @@
 import 'package:debestech_course_project/common/values/color.dart';
+import 'package:debestech_course_project/common/widgets/base_text_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -6,16 +7,7 @@ AppBar buildAppBar() {
   return AppBar(
     title: Container(
         child: Container(
-      child: Center(
-        child: Text(
-          "Settings",
-          style: TextStyle(
-            color: AppColors.primaryText,
-            fontWeight: FontWeight.bold,
-            fontSize: 16.sp,
-          ),
-        ),
-      ),
+      child: Center(child: reusableText("Settings")),
     )),
   );
 }

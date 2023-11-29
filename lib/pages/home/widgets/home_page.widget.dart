@@ -1,4 +1,5 @@
 import 'package:debestech_course_project/common/values/color.dart';
+import 'package:debestech_course_project/common/widgets/base_text_widget.dart';
 import 'package:debestech_course_project/pages/home/bloc/home_page_bloc.dart';
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
@@ -183,9 +184,9 @@ Widget menuView() {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
-            _reusableText("Choose your course"),
+            reusableText("Choose your course"),
             GestureDetector(
-              child: _reusableText("See all",
+              child: reusableText("See all",
                   color: AppColors.primaryThirdElementText, fontsize: 12),
             )
           ],
@@ -211,19 +212,6 @@ Widget menuView() {
   );
 }
 
-Widget _reusableText(String text,
-    {Color color = AppColors.primaryText,
-    int fontsize = 16,
-    FontWeight fontWeight = FontWeight.bold}) {
-  return Container(
-    child: Text(
-      text,
-      style: TextStyle(
-          color: color, fontWeight: FontWeight.bold, fontSize: fontsize.sp),
-    ),
-  );
-}
-
 // for the menu buttons, reusable text
 Widget _reusableMenuText(String menuText,
     {Color textColor = AppColors.primaryElementText,
@@ -236,7 +224,7 @@ Widget _reusableMenuText(String menuText,
         color: backGroundColor,
         borderRadius: BorderRadius.circular(7.w),
         border: Border.all(color: backGroundColor)),
-    child: _reusableText(menuText,
+    child: reusableText(menuText,
         color: textColor, fontWeight: FontWeight.normal, fontsize: 11),
   );
 }
