@@ -88,9 +88,9 @@ class AppPages {
 
           print("Second Login");
           return MaterialPageRoute(
-              // builder: (_) => const SignIn(), settings: settings);
-              builder: (_) => const ApplicationPage(),
-              settings: settings);
+              builder: (_) => const SignIn(), settings: settings);
+          // builder: (_) => const ApplicationPage(),
+          // settings: settings);
         }
         return MaterialPageRoute(
             builder: (_) => result.first.page, settings: settings);
